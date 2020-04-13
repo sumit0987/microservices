@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +19,16 @@ import com.demo.order.dto.OrderDto;
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
+	
+	@Autowired
+	Environment environment;
+	
+	@GetMapping("/info")
+	public String getPortNo() {
+		String port = environment.getProperty("local.server.port");
+		return "From server "+port;
+	}
+
 	
 	@GetMapping("")
 	public List<OrderDto> getAllOrders() {
