@@ -15,6 +15,9 @@ import com.demo.feignuserservice.dto.OrderDto;
 @FeignClient(name="http://order-service/orders")
 public interface OrderClient {
 	
+	@GetMapping("/info")
+	public String getPortNo();
+	
 	@GetMapping("")
 	public List<OrderDto> getAllOrders();
 	

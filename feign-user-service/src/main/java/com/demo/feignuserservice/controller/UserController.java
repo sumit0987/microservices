@@ -17,6 +17,11 @@ public class UserController {
 	@Autowired
 	OrderClient	orderClient;
 	
+	@GetMapping("/usertest")
+	public String getPort() {
+		return orderClient.getPortNo();
+	}
+	
 	@GetMapping("/users")
 	public List<OrderDto> getAllUserOrder() {
 		System.out.println("Feign user controller get all orders");
